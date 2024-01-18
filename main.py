@@ -1,7 +1,11 @@
 import sys
+import os
 
-file = sys.argv[1]
+directory = sys.argv[1]
 
-with open(file, 'r') as file:
-        data = file.read()
-        print(f"{file} =========> {data}")
+for root, dirs, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            with open(file, 'r') as file:
+                data = file.read()
+                print(f"{file} =========> {data}")
